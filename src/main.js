@@ -12,13 +12,17 @@ export async function createApp({
 } = {}) {
   const router = createRouter();
 
+  const apolloProvider = createProvider({
+		ssr: process.server,
+	});
+
   await beforeApp({
     router
   });
 
   const app = new Vue({
     router,
-    provide: createProvider().provide(),
+    provide: apolloProvider.provide(),
     render: h => h(App)
   });
 
