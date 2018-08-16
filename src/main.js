@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import { createRouter } from "./router";
+import { createProvider } from "./vue-apollo";
 
 Vue.config.productionTip = false;
 
@@ -17,6 +18,7 @@ export async function createApp({
 
   const app = new Vue({
     router,
+    provide: createProvider().provide(),
     render: h => h(App)
   });
 
